@@ -10,7 +10,7 @@ local function menu()
     funcT["dorpAll"] = "Params:(itemid:string)Drops all item in turtle's inventory by given id,drop item in font of the turtle,returns how many it would drop."
     -- Print the table
     for k,v in pairs(funcT) do
-        print(k," --- ",v)
+        textutils.pagedTabulate(colors.orange, {"Function", "Desc"}, colors.lightBlue, table.unpack(funcT))
     end
 end
 
@@ -63,7 +63,9 @@ local function dorpAll(itemid)
     -- Select and drop.
     if amount > 0 then
         for _=1,16 do
-            turtle.drop(itemScanner(itemid))
+            if itemScanner(itemid) > 0 then
+                turtle.drop(turtle.getItemCount(turtle.getSelectedSlot()))
+            end
         end
     end
     return amount
