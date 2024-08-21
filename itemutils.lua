@@ -1,17 +1,22 @@
 -- Utils for items.
 print("ItemUtils: Use 'menu' to get help menu.")
+
 local function menu()
     -- Please update the table manually.
     local funcT = {}
     funcT["menu"] = "Print this table."
-    funcT["itemScanner"] = "Params:(itemId:string)Scan turtle's inventory by given itemid,\nreturns the first matched slot;return -1 if find nothing."
+    funcT["itemScanner"] = "Params:(itemId:string)Scans turtle's inventory by given itemid,\nreturns the first matched slot;return -1 if find nothing."
     funcT["getTotualCount"] = "Params:(item:string)Returns totual item by given id."
+    funcT["dorpAll"] = "Params:(itemid:string)Drops all item in turtle's inventory by given id,drop item in font of the turtle,returns how many it would drop."
     -- Print the table
     for k,v in pairs(funcT) do
         print(k," --- ",v)
     end
 end
--- A function searchs item in turtle's inventory.
+
+
+
+-- A function scans item in turtle's inventory by given id.
 local function itemScanner(itemId)
     for _ = 1,16 do
         -- Change the selected slot
@@ -29,7 +34,8 @@ local function itemScanner(itemId)
     -- Return -1 if find nothing.
     return -1    
 end
-        
+
+
 
 -- A function returns the totual amount of item in turtle's inventory.
 local function getTotualCount(item)
@@ -50,8 +56,18 @@ local function getTotualCount(item)
     -- Return.
     return count
 end
-        
 
+-- A function dorps all item by given id,returns how many it would drop.
+local function dorpAll(itemid)
+    local amont = getTotualCount(itemid)
+    -- Select and drop.
+    if amount > 0 then
+        for _=1,16 do
+            turtle.drop(itemScanner(itemid))
+        end
+    end
+    return amount
+end
 
 -- Return functions.
 return {menu = menu,itemScanner = itemScanner,getTotualCount = getTotualCount}
