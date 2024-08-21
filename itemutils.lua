@@ -113,4 +113,11 @@ local function dropAll(itemId)
 end
 
 -- Return functions.
-return {menu = menu,itemMatcher = itemMatcher,itemScanner = itemScanner,itemScanner2 = itemScanner2,getTotualCount = getTotualCount,dropAll = dropAll}
+return {
+    menu = menu,
+    itemMatcher = itemMatcher,
+    itemScanner = itemScanner,
+    itemScanner2 = itemScanner2,
+    getTotualCount = getTotualCount,
+    dropAll = dropAll
+}
