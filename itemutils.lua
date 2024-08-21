@@ -1,13 +1,15 @@
 -- Utils for items.
-print("ItemUtils: Use 'menu' to get help menu.")
+print("ItemUtils: Use 'menu()' to list functions.")
 
 local function menu()
     -- Please update the table manually.
     local funcT = {}
-    funcT["menu"] = "Print this table."
-    funcT["itemScanner"] = "Params:(itemId:string)Scans turtle's inventory by given itemid,\nreturns the first matched slot;return -1 if find nothing."
-    funcT["getTotualCount"] = "Params:(item:string)Returns totual item by given id."
-    funcT["dorpAll"] = "Params:(itemid:string)Drops all item in turtle's inventory by given id,drop item in font of the turtle,returns how many it would drop."
+    funcT["menu"] = "Params:(nil) Returns:(nil)."
+    funcT["itemScanner"] = "Params:(itemId:string,select:bool) Returns:(number)."
+    funcT["itemScanner2"] = "Params:(itemId:string) Returns:(table[A list of numbers])."
+    funcT["getTotualCount"] = "Params:(itemId:string) Returns:(number)."
+    funcT["itemMatcher"] = "Params:(itemId:string,slot:number[1-16]) Returns:(bool)."
+    funcT["dorpAll"] = "Params:(itemId:string) Returns:(number)."
     -- Print the table
     for k,v in pairs(funcT) do
         print(k , " --- " , v)
@@ -15,55 +17,85 @@ local function menu()
 end
 
 
-
--- A function scans item in turtle's inventory by given id.
-local function itemScanner(itemId)
-    for _ = 1,16 do
-        -- Change the selected slot
-        turtle.select(_)
-        local currentItem = turtle.getItemDetail(_)
-        if currentItem then
-            local _itemId = currentItem["name"]
-            if _itemId == itemId then
-                -- Return the slot number
-                return _
-            end
-        end
-        
-    end  
-    -- Return -1 if find nothing.
-    return -1    
+--[[
+    A function matches items based on the given slot,returning true if matched.
+]]
+local function itemMatcher(itemId,slot)
+    local _item = turtle.getItemDetail(slot)
+    if _item then
+        return _item["name"] == itemId
+    else
+        return false
+    end
 end
 
 
 
--- A function returns the totual amount of item in turtle's inventory.
-local function getTotualCount(itemId)
-    local count = 0
-    local slot = turtle.getSelectedSlot()
-    for _=1,16 do
-        -- Change the seleted slot
-        turtle.select(_)
-        local _item = turtle.getItemDetail()
-        if _item then
-            if _item["name"] == itemId then
-                count = count + turtle.getItemCount(_)
-            end
+--[[
+    A function scans the turtle's inventory for a specified item ID, 
+returning the slot of the first match; it returns -1 if nothing is found.
+    Select the matched slot if enabled.
+]]
+local function itemScanner(itemId,select)
+    for _ = 1,16 do
+        if itemMatcher(itemId,_) then
+                if select then
+                    -- Change the selected slot
+                    turtle.select(_)
+                end
+                -- Return the slot number
+                return _
         end
     end
-    -- Reset the seleted slot.
-    turtle.select(slot)
+    -- Returns -1 if nothing is found.
+    return -1
+end
+
+
+
+--[[
+    A function scans the turtle's inventory for a specified item ID, 
+returning a table containing a list of matched slot.
+]]
+local function itemScanner2(itemId)
+    local results = {}
+    for _ = 1,16 do
+        if itemMatcher(itemId,_) then
+                table.insert(results,_)
+        end
+    end
+    -- Returns {} if nothing is found.
+    return results
+end
+
+
+
+--[[
+    A function returns the number of items in turtle's inventory.
+]]
+local function getTotualCount(itemId)
+    local count = 0
+    for _=1,16 do
+        if itemMatcher(itemId,_) then
+                count = count + turtle.getItemCount(_) 
+        end
+    end
     -- Return.
     return count
 end
 
--- A function dorps all item by given id,returns how many it would drop.
+--[[
+    A function Drops all items in the turtle's inventory that match the given ID,
+dropping the items in front of the turtle, 
+and returns the number of items that would be dropped.
+]]
 local function dropAll(itemId)
-    local amont = getTotualCount(itemId)
+    local amount = getTotualCount(itemId)
     -- Select and drop.
     if amount > 0 then
         for _=1,16 do
-            if itemScanner(itemId) > 0 then
+            if itemMatcher(itemId,_) then
+                turtle.select(_)
                 turtle.drop(turtle.getItemCount(turtle.getSelectedSlot()))
             end
         end
@@ -72,4 +104,4 @@ local function dropAll(itemId)
 end
 
 -- Return functions.
-return {menu = menu,itemScanner = itemScanner,getTotualCount = getTotualCount,dropAll = dropAll}
+return {menu = menu,itemMatcher = itemMatcher,itemScanner = itemScanner,itemScanner2 = itemScanner2,getTotualCount = getTotualCount,dropAll = dropAll}
