@@ -1,14 +1,18 @@
--- Utils for items.
+--[[
+    Utils for items.
+    Author: github.com/acaeaeeda (Acaeaeeda)
+    All Rights Reserved.
+]]
 print("ItemUtils: Use 'menu()' to list functions.")
 
 local function menu()
     -- Please update the table manually.
-    local funcT = {}
+    local funcT = {} -- function table
     funcT["menu"] = "Params:(nil) Returns:(nil)."
     funcT["itemScanner"] = "Params:(itemId:string,select:bool) Returns:(number)."
     funcT["itemScanner2"] = "Params:(itemId:string) Returns:(table[A list of numbers])."
     funcT["getTotualCount"] = "Params:(itemId:string) Returns:(number)."
-    funcT["itemMatcher"] = "Params:(itemId:string,slot:number[1-16]) Returns:(bool)."
+    funcT["itemMatcher"] = "Params:(itemId:string,slot:number[-1,1-16]) Returns:(bool)."
     funcT["dorpAll"] = "Params:(itemId:string) Returns:(number)."
     -- Print the table
     for k,v in pairs(funcT) do
@@ -19,8 +23,13 @@ end
 
 --[[
     A function matches items based on the given slot,returning true if matched.
+    To use current selected slot,set param "slot" to "-1".
 ]]
 local function itemMatcher(itemId,slot)
+    if slot == -1 then
+        slot = turtle.getSelectedSlot()
+    end
+    -- Get detailed item information.
     local _item = turtle.getItemDetail(slot)
     if _item then
         return _item["name"] == itemId
@@ -77,7 +86,7 @@ local function getTotualCount(itemId)
     local count = 0
     for _=1,16 do
         if itemMatcher(itemId,_) then
-                count = count + turtle.getItemCount(_) 
+                count = count + turtle.getItemCount(_)
         end
     end
     -- Return.
