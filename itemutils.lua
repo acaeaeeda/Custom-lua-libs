@@ -10,7 +10,7 @@ local function menu()
     funcT["dorpAll"] = "Params:(itemid:string)Drops all item in turtle's inventory by given id,drop item in font of the turtle,returns how many it would drop."
     -- Print the table
     for k,v in pairs(funcT) do
-        print(k + " --- " + v)
+        print(k , " --- " , v)
     end
 end
 
