@@ -38,7 +38,7 @@ end
 
 
 -- A function returns the totual amount of item in turtle's inventory.
-local function getTotualCount(item)
+local function getTotualCount(itemId)
     local count = 0
     local slot = turtle.getSelectedSlot()
     for _=1,16 do
@@ -46,7 +46,7 @@ local function getTotualCount(item)
         turtle.select(_)
         local _item = turtle.getItemDetail()
         if _item then
-            if _item["name"] == item then
+            if _item["name"] == itemId then
                 count = count + turtle.getItemCount(_)
             end
         end
@@ -58,12 +58,12 @@ local function getTotualCount(item)
 end
 
 -- A function dorps all item by given id,returns how many it would drop.
-local function dorpAll(itemid)
-    local amont = getTotualCount(itemid)
+local function dropAll(itemId)
+    local amont = getTotualCount(itemId)
     -- Select and drop.
     if amount > 0 then
         for _=1,16 do
-            if itemScanner(itemid) > 0 then
+            if itemScanner(itemId) > 0 then
                 turtle.drop(turtle.getItemCount(turtle.getSelectedSlot()))
             end
         end
@@ -72,4 +72,4 @@ local function dorpAll(itemid)
 end
 
 -- Return functions.
-return {menu = menu,itemScanner = itemScanner,getTotualCount = getTotualCount,dorpAll = dorpAll}
+return {menu = menu,itemScanner = itemScanner,getTotualCount = getTotualCount,dropAll = dropAll}
