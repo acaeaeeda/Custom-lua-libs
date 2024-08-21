@@ -80,7 +80,7 @@ end
 
 
 --[[
-    A function returns the number of items in turtle's inventory.
+    A function returns the totual number of items in turtle's inventory.
 ]]
 local function getTotualCount(itemId)
     local count = 0
