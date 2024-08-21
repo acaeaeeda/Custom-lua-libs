@@ -12,7 +12,7 @@ local function menu()
     funcT["menu"] = "Params:(nil) Returns:(nil)."
     funcT["itemScanner"] = "Params:(itemId:string,select:bool) Returns:(number)."
     funcT["itemScanner2"] = "Params:(itemId:string) Returns:(table[A list of numbers])."
-    funcT["getTotualCount"] = "Params:(itemId:string) Returns:(number)."
+    funcT["getTotalCount"] = "Params:(itemId:string) Returns:(number)."
     funcT["itemMatcher"] = "Params:(itemId:string,slot:number[-1,1-16]) Returns:(bool)."
     funcT["dorpAll"] = "Params:(itemId:string) Returns:(number)."
     -- Print the table
@@ -81,9 +81,9 @@ end
 
 
 --[[
-    A function returns the totual number of items in turtle's inventory.
+    A function returns the total number of a specified item within the turtle's inventory.
 ]]
-local function getTotualCount(itemId)
+local function getTotalCount(itemId)
     local count = 0
     for _=1,16 do
         if itemMatcher(itemId,_) then
@@ -100,7 +100,7 @@ dropping the items in front of the turtle,
 and returns the number of items that would be dropped.
 ]]
 local function dropAll(itemId)
-    local amount = getTotualCount(itemId)
+    local amount = getTotalCount(itemId)
     -- Select and drop.
     if amount > 0 then
         for _=1,16 do
@@ -119,6 +119,6 @@ return {
     itemMatcher = itemMatcher,
     itemScanner = itemScanner,
     itemScanner2 = itemScanner2,
-    getTotualCount = getTotualCount,
+    getTotalCount = getTotalCount,
     dropAll = dropAll
 }
