@@ -1,6 +1,6 @@
 --[[
     Utils for farmer turtle.
-    Version: 0.0.2
+    Version: 0.0.3
     Author: github.com/acaeaeeda (Acaeaeeda)
     Link: https://github.com/acaeaeeda/Custom-lua-libs for detailed information.
 ]]
@@ -25,7 +25,9 @@ local function canReap()
             if crops[modid][name] then
                 return crops[modid][name][0] == block.state.age
             end
+            return false
         end
+        return false
     end
 end
 
