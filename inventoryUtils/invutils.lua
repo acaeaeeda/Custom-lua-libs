@@ -1,25 +1,10 @@
 --[[
     Utils for turtle's inventory.
-    Version: 0.0.2
+    Version: 0.1.0
     Author: github.com/acaeaeeda (Acaeaeeda)
-    All Rights Reserved.
+    Link: https://github.com/acaeaeeda/Custom-lua-libs for detailed information.
 ]]
-print("InventoryUtils: Use 'menu()' to list functions.")
 
-local function menu()
-    -- Please update the table manually.
-    local funcT = {} -- function table
-    funcT["menu"] = "Params:(nil) Returns:(nil)."
-    funcT["itemScanner"] = "Params:(itemId:string,select:bool) Returns:(number)."
-    funcT["itemScanner2"] = "Params:(itemId:string) Returns:(table[A list of numbers])."
-    funcT["getTotalCount"] = "Params:(itemId:string) Returns:(number)."
-    funcT["itemMatcher"] = "Params:(itemId:string,slot:number[-1,1-16]) Returns:(bool)."
-    funcT["dorpAll"] = "Params:(itemId:string) Returns:(number)."
-    -- Print the table
-    for k,v in pairs(funcT) do
-        print(k , " --- " , v)
-    end
-end
 
 
 --[[
@@ -57,7 +42,7 @@ local function itemScanner(itemId,select)
                 return _
         end
     end
-    -- Returns -1 if nothing is found.
+    -- Return -1 if nothing is found.
     return -1
 end
 
@@ -74,7 +59,7 @@ local function itemScanner2(itemId)
                 table.insert(results,_)
         end
     end
-    -- Returns {} if nothing is found.
+    -- Return {} if nothing is found.
     return results
 end
 
@@ -93,6 +78,8 @@ local function getTotalCount(itemId)
     -- Return.
     return count
 end
+
+
 
 --[[
     A function Drops all items in the turtle's inventory that match the given ID,
@@ -113,9 +100,10 @@ local function dropAll(itemId)
     return amount
 end
 
+
+
 -- Return functions.
 return {
-    menu = menu,
     itemMatcher = itemMatcher,
     itemScanner = itemScanner,
     itemScanner2 = itemScanner2,
