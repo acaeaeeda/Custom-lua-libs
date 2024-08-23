@@ -1,3 +1,10 @@
+--[[
+    Utils for farmer turtle.
+    Version: 0.0.2
+    Author: github.com/acaeaeeda (Acaeaeeda)
+    Link: https://github.com/acaeaeeda/Custom-lua-libs for detailed information.
+]]
+
 local crops = require("dataManager")
 
 
@@ -20,13 +27,7 @@ local function canReap()
             end
         end
     end
-                    
 end
-
-
-
--- test
-print(canReap())
 
 
 -- Return
