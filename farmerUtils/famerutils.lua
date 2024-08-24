@@ -25,10 +25,10 @@ local function canReap()
             if crops[modid][name] then
                 return crops[modid][name][0] == block.state.age
             end
-            return false
         end
         return false
     end
+    return false
 end
 
 
