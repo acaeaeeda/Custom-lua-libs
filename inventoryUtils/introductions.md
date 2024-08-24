@@ -1,11 +1,11 @@
 # 简介
 Inventory Utils 是为管理 CC:T 海龟(turtle)的物品栏提供了一些便捷的方法.<br>
 Version: `0.1.0`
-<br>
-# 提示
+
+## 提示
 - 不支持物品标签(tag).
 
-# 使用方法
+## 使用方法
 使用 `require("invutils")` 导入.
 
 # 定义的方法<br>
