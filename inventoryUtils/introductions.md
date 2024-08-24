@@ -7,7 +7,7 @@ Version: `0.1.0`
 - 此文档将始终与最新版保持一致.
 
 ## 使用方法
-使用 `require("invutils")` 导入.
+[官方文档](https://tweaked.cc/guide/using_require.html)
 
 # 定义的方法
 ## itemMatcher(itemId,slot) -> boolean
