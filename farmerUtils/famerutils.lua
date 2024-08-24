@@ -1,6 +1,6 @@
 --[[
     Utils for farmer turtle.
-    Version: 0.0.3
+    Version: 0.0.4
     Author: github.com/acaeaeeda (Acaeaeeda)
     Link: https://github.com/acaeaeeda/Custom-lua-libs for detailed information.
 ]]
