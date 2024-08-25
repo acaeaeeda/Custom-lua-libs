@@ -1,5 +1,5 @@
 # 简介
-en_us<br>
+[en_us](https://github.com/acaeaeeda/Custom-lua-libs/blob/e415002ae007fc2c4e8d9ea90c22d9d1443fb2d8/en_us/farmerUtils/README.md)<br>
 Farmer Utils 为使用 CC:T 海龟(turtle)提供了一些~~目前只有一个~~管理农田的方法.<br>
 Version: `0.0.4`
 
