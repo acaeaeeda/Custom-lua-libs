@@ -7,10 +7,6 @@
 
 
 
---[[
-    A function matches items based on the given slot,returning true if matched.
-    To use current selected slot,set param "slot" to "-1".
-]]
 local function itemMatcher(itemId,slot)
     if slot == -1 then
         slot = turtle.getSelectedSlot()
@@ -26,11 +22,6 @@ end
 
 
 
---[[
-    A function scans the turtle's inventory for a specified item ID, 
-returning the slot of the first match; it returns -1 if nothing is found.
-    Select the matched slot if enabled.
-]]
 local function itemScanner(itemId,select)
     for _ = 1,16 do
         if itemMatcher(itemId,_) then
@@ -48,10 +39,6 @@ end
 
 
 
---[[
-    A function scans the turtle's inventory for a specified item ID, 
-returning a table containing a list of matched slot.
-]]
 local function itemScanner2(itemId)
     local results = {}
     for _ = 1,16 do
@@ -65,9 +52,6 @@ end
 
 
 
---[[
-    A function returns the total number of a specified item within the turtle's inventory.
-]]
 local function getTotalCount(itemId)
     local count = 0
     for _=1,16 do
@@ -81,11 +65,6 @@ end
 
 
 
---[[
-    A function Drops all items in the turtle's inventory that match the given ID,
-dropping the items in front of the turtle, 
-and returns the number of items that would be dropped.
-]]
 local function dropAll(itemId)
     local amount = getTotalCount(itemId)
     -- Select and drop.
