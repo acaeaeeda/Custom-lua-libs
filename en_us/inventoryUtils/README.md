@@ -1,4 +1,4 @@
-# Introduction
+# Introductions
 Inventory Utils provides some convenient methods for managing the inventory of CC:T turtles.<br>
 Version: `0.1.0`
 
