@@ -5,6 +5,7 @@ Version: `0.0.4`
 ## Notes
 - The configuration file (`dataManager.lua`) must be in the same directory level as the library body (`farmerutils.lua`).
 - This document will always be consistent with the latest version.
+- This document is translated by Tiangong AI.
 
 # Methods
 ## canReap() -> boolean
