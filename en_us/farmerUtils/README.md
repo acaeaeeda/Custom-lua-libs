@@ -6,7 +6,7 @@ Version: `0.0.4`
 - The configuration file (`dataManager.lua`) must be in the same directory level as the library body (`farmerutils.lua`).
 - This document will always be consistent with the latest version.
 
-# Defined Methods
+# Methods
 ## canReap() -> boolean
 **Description:**
 Detects whether the crop below the turtle can be harvested based on the information in the configuration file.<br>
