@@ -1,5 +1,5 @@
 # 配置 dataManager
-en_us
+[en_us](https://github.com/acaeaeeda/Custom-lua-libs/blob/abf86cf3c57c4cb4fee07d2d525d797b14882e01/en_us/farmerUtils/Configurations.md)
 ## 注意事项
 - 此文件是LIB `famerutils` 本体的配置文件，默认必须与其放在同级文件夹内，否则无法正常加载.
 - 注意请勿删除文件末尾处的`return`.
