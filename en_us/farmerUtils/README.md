@@ -7,6 +7,9 @@ Version: `0.0.4`
 - This document will always be consistent with the latest version.
 - This document is translated by Tiangong AI.
 
+## Further Reading
+[How to Edit Configuration Files](https://github.com/acaeaeeda/Custom-lua-libs/blob/abf86cf3c57c4cb4fee07d2d525d797b14882e01/en_us/farmerUtils/Configurations.md)
+
 # Methods
 ## canReap() -> boolean
 **Description:**
