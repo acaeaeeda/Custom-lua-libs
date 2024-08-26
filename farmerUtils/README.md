@@ -5,7 +5,10 @@ Version: `0.0.4`
 
 ## 提示
 - 配置文件(`dataManager.lua`)必须与LIB本体(`farmerutils.lua`)放在同级文件夹下.
-- 此文档将始终与最新版保持一致.
+- 此文档将始终与最新版保持一致.<br>
+
+## 延伸阅读
+如何编辑配置文件
 
 # 定义的方法
 ## canReap() -> boolean
