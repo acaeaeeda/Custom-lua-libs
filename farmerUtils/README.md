@@ -8,7 +8,7 @@ Version: `0.0.4`
 - 此文档将始终与最新版保持一致.<br>
 
 ## 延伸阅读
-如何编辑配置文件
+[如何编辑配置文件](https://github.com/acaeaeeda/Custom-lua-libs/blob/ae908019403f943ec8ac7c350395b2a574457d8d/farmerUtils/Configurations.md)
 
 # 定义的方法
 ## canReap() -> boolean
