@@ -1,6 +1,6 @@
 --[[
     Utils for turtle's inventory.
-    Version: 0.1.0
+    Version: 0.2.0
     Author: github.com/acaeaeeda (Acaeaeeda)
     Link: https://github.com/acaeaeeda/Custom-lua-libs for detailed information.
 ]]
@@ -65,6 +65,32 @@ end
 
 
 
+local function getEmptySlots()
+    local count = 0
+    local slots = {}
+    for _ = 1,16 do 
+        local _item = turtle.getItemDetail(_)
+        if not _item then
+            count = count + 1
+            table.insert(slots,_)
+        end
+    end
+    return count,slots
+end
+
+
+local function clearInv()
+    local selectedSlot = turtle.getSelectedSlot()
+    for i = 1, 16 do
+        turtle.select(i)
+        -- Clear turtle's inventory.
+        turtle.drop()
+    end
+    -- Reset the selected slot.
+    turtle.select(selectedSlot)
+end
+
+
 local function dropAll(itemId)
     local amount = getTotalCount(itemId)
     -- Select and drop.
@@ -87,6 +113,8 @@ return {
     itemScanner = itemScanner,
     itemScanner2 = itemScanner2,
     getTotalCount = getTotalCount,
+    getEmptySlots = getEmptySlots,
+    clearInv = clearInv,
     dropAll = dropAll
 }
 
