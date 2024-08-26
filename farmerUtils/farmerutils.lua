@@ -28,7 +28,7 @@ local function canReap()
         local modid,name = nameSpliter(block.name)
         if crops[modid] then
             if crops[modid][name] then
-                return crops[modid][name][0] == block.state.age
+                return crops[modid][name][1] == block.state.age
             end
         end
         return false
