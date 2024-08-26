@@ -1,6 +1,6 @@
 --[[
     Utils for farmer turtle.
-    Version: 0.0.4
+    Version: 0.1.0
     Author: github.com/acaeaeeda (Acaeaeeda)
     Link: https://github.com/acaeaeeda/Custom-lua-libs for detailed information.
 ]]
@@ -14,6 +14,11 @@ local function nameSpliter(text)
     local modid = string.sub(text,1,marker-1)
     local name = string.sub(text,marker+1,string.len(text))
     return modid,name
+end
+
+
+local function nameSplicer(modid,_name)
+    return string.format("%s:%s",modid,_name)
 end
 
 
@@ -32,8 +37,30 @@ local function canReap()
 end
 
 
+local function canPlant()
+    local hasBlock,v = turtle.inspectDown()
+    return hasBlock == false
+end
+
+
+local function isSeed()
+    local _item = turtle.getItemDetail(turtle.getSelectedSlot())
+    if _item then
+        for modid,_name in pairs(crops) do
+            if nameSplicer(modid,crops[modid][_name][2]) == _item.name then
+                return true
+            end
+        end
+        return false
+    end
+    return false
+end
+
+
 -- Return
 return {
-    canReap = canReap
+    canReap = canReap,
+    canPlant = canPlant,
+    isSeed = isSeed
 }
 
